@@ -10,9 +10,11 @@ public interface AircraftService {
 
     AircraftDto save(AircraftDto aircraftDto);
 
-    Optional<AircraftEntity> findById(Long aircraftId);
+    AircraftDto update(AircraftDto aircraftDto);
 
-    List<AircraftEntity> findAll();
+    Optional<AircraftDto> findById(Long aircraftId);
+
+    List<AircraftDto> findAll();
 
     boolean existsById(Long aircraftId);
 
