@@ -9,10 +9,11 @@ public class AircraftDto {
     private double fuelTankSize; // measured in liters
     private double fuelBurnRate; // measured in liters per hour at cruise speed
     private double airspeed; // measured in knots at cruise speed
+    private double range; // measured in nautical miles
     private double maximumRunwayLength; // measured in feet
 
     public AircraftDto(long aircraftId, String aircraftMake, String aircraftModel, String aircraftType, double fuelTankSize,
-                       double fuelBurnRate, double airspeed, double maximumRunwayLength) {
+                       double fuelBurnRate, double airspeed, double range, double maximumRunwayLength) {
         this.aircraftId = aircraftId;
         this.aircraftMake = aircraftMake;
         this.aircraftModel = aircraftModel;
@@ -20,6 +21,7 @@ public class AircraftDto {
         this.fuelTankSize = fuelTankSize;
         this.fuelBurnRate = fuelBurnRate;
         this.airspeed = airspeed;
+        this.range = range;
         this.maximumRunwayLength = maximumRunwayLength;
     }
 
@@ -78,6 +80,10 @@ public class AircraftDto {
     public void setAirspeed(double airspeed) {
         this.airspeed = airspeed;
     }
+
+    public double getRange() { return range; }
+
+    public void setRange(double range) { this.range = range; }
 
     public double getMaximumRunwayLength() {
         return maximumRunwayLength;
