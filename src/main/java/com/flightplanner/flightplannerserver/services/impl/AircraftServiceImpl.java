@@ -32,17 +32,28 @@ public class AircraftServiceImpl implements AircraftService {
     }
 
     @Override
-    public Optional<AircraftEntity> findById(Long aircraftId) {
-        return aircraftRepository.findById(aircraftId);
+    public AircraftDto update(AircraftDto aircraftDto) {
+
+        AircraftEntity aircraftEntity = aircraftMapper.mapFrom(aircraftDto);
+        AircraftEntity updatedAircraftEntity = aircraftRepository.save(aircraftEntity);
+        return aircraftMapper.mapTo(updatedAircraftEntity);
     }
 
     @Override
-    public List<AircraftEntity> findAll() {
+    public Optional<AircraftDto> findById(Long aircraftId) {
+
+        Optional<AircraftEntity> aircraftEntity = aircraftRepository.findById(aircraftId);
+        return aircraftEntity.map(aircraftMapper::mapTo);
+    }
+
+    @Override
+    public List<AircraftDto> findAll() {
         return StreamSupport
                 .stream(aircraftRepository
                         .findAll()
                         .spliterator(),
                         false)
+                .map(aircraftMapper::mapTo)
                 .collect(Collectors.toList()
                 );
     }
