@@ -12,7 +12,7 @@ public class AirportDto {
     private double longitude;
     private boolean isJetAAvailable;
     private boolean isAvgasAvailable;
-    private double minimumRunwayLengthRequired;
+    private double minimumRunwayLengthRequired; // measured in feet
 
     public AirportDto(long airportId, String icao, String airportName, String continent, String country, String stateOrRegion,
                       double latitude, double longitude, boolean isJetAAvailable, boolean isAvgasAvailable, double minimumRunwayLengthRequired) {
