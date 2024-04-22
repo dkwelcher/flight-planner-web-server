@@ -26,5 +26,5 @@ public class AircraftEntity {
     private double fuelBurnRate; // measured in liters per hour at cruise speed
     private double airspeed; // measured in knots at cruise speed
     private double range; // measured in nautical miles
-    private double maximumRunwayLength; // measured in feet
+    private double minimumRunwayLengthRequired; // measured in feet
 }
