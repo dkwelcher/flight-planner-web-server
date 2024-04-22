@@ -14,12 +14,12 @@ public class AirportDto {
     private long airportId;
     private String icao;
     private String airportName;
-    private String continent;
-    private String country;
-    private String stateOrRegion;
+    private ContinentDto continent;
+    private CountryDto country;
+    private StateOrRegionDto stateOrRegion;
     private double latitude;
     private double longitude;
     private boolean isJetAAvailable;
     private boolean isAvgasAvailable;
-    private double minimumRunwayLengthRequired; // measured in feet
+    private double maximumRunwayLength; // measured in feet
 }
