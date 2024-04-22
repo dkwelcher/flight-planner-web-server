@@ -28,7 +28,7 @@ public class AircraftServiceImpl implements AircraftService {
 
         AircraftEntity aircraftEntity = aircraftMapper.mapFrom(aircraftDto);
         AircraftEntity savedAircraftEntity =  aircraftRepository.save(aircraftEntity);
-        return aircraftMapper.mapTo(aircraftEntity);
+        return aircraftMapper.mapTo(savedAircraftEntity);
     }
 
     @Override
