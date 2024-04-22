@@ -16,7 +16,6 @@ public class AirportDto {
     private String airportName;
     private ContinentDto continent;
     private CountryDto country;
-    private StateOrRegionDto stateOrRegion;
     private double latitude;
     private double longitude;
     private boolean isJetAAvailable;
