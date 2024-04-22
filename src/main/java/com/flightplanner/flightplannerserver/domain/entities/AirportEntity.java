@@ -29,10 +29,6 @@ public class AirportEntity {
     @JoinColumn(name = "countryId")
     private CountryEntity country;
 
-    @ManyToOne
-    @JoinColumn(name = "stateOrRegionId")
-    private StateOrRegionEntity stateOrRegion;
-
     private double latitude;
     private double longitude;
     private boolean isJetAAvailable;
