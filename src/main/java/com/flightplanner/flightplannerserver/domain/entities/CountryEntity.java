@@ -22,5 +22,5 @@ public class CountryEntity {
 
     @ManyToOne
     @JoinColumn(name = "continentId")
-    private ContinentEntity continentEntity;
+    private ContinentEntity continent;
 }
