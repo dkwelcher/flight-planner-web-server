@@ -45,7 +45,7 @@ public class AirportController {
     }
 
     // GET /airport/123
-    @GetMapping
+    @GetMapping(path = "/airports/{airportId}")
     public ResponseEntity<AirportDto> findAirportById(@PathVariable("airportId") long airportId) {
 
         Optional<AirportDto> airportDto = airportService.findById(airportId);
