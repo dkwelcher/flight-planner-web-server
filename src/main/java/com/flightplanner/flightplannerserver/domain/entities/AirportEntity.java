@@ -22,16 +22,12 @@ public class AirportEntity {
     private String airportName;
 
     @ManyToOne
-    @JoinColumn(name = "continentId")
-    private ContinentEntity continent;
-
-    @ManyToOne
     @JoinColumn(name = "countryId")
     private CountryEntity country;
 
     private double latitude;
     private double longitude;
-    private boolean isJetAAvailable;
+    private boolean isJetaAvailable;
     private boolean isAvgasAvailable;
     private double maximumRunwayLength; // measured in feet
 }
