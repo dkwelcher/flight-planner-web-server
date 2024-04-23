@@ -14,11 +14,10 @@ public class AirportDto {
     private long airportId;
     private String icao;
     private String airportName;
-    private ContinentDto continent;
     private CountryDto country;
     private double latitude;
     private double longitude;
-    private boolean isJetAAvailable;
+    private boolean isJetaAvailable;
     private boolean isAvgasAvailable;
     private double maximumRunwayLength; // measured in feet
 }
