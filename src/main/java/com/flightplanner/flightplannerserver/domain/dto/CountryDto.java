@@ -13,5 +13,5 @@ public class CountryDto {
 
     private long countryId;
     private String countryName;
-    private ContinentDto continentDto;
+    private ContinentDto continent;
 }
