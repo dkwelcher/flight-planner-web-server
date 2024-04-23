@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AirportRepository extends CrudRepository<AirportEntity, Long> {
+
+    boolean existsByAirportName(String airportName);
 }
