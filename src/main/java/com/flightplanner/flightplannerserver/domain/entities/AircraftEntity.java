@@ -22,6 +22,7 @@ public class AircraftEntity {
     private String aircraftMake;
     private String aircraftModel;
     private String aircraftType;
+    private String fuelType;
     private double fuelTankSize; // measured in liters
     private double fuelBurnRate; // measured in liters per hour at cruise speed
     private double airspeed; // measured in knots at cruise speed
