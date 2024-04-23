@@ -1,0 +1,7 @@
+1,Airbus,A380,jet,jeta,320000.0,18400.0,460.0,7000.0,
+2,Airbus,A320,jet,jeta,27200.0,3648.14,450.0,5900.0,
+3,Boeing,777,jet,jeta,126000.0,8000.0,550.0,7000.0,
+4,Boeing,747,jet,jeta,79304.0,6000.0,550.0,6500.0,
+5,Cessna,Caravan,turboprop,jeta,650.0,100.0,160.0,2160.0,
+6,Pilatus,PC-12,turboprop,jeta,2704.0,332.0,240.0,2600.0,
+7,Beechcraft,Bonanza,prop,aavgas,200.0,40.0,130.0,1500.0,
