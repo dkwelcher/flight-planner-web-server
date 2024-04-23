@@ -74,7 +74,7 @@ public class CountryLoader implements CommandLineRunner {
 
                 CountryDto countryDto = CountryDto.builder()
                         .countryName(countryName)
-                        .continentDto(continentDto)
+                        .continent(continentDto)
                         .build();
                 countryService.save(countryDto);
             }
