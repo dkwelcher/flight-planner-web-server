@@ -26,6 +26,7 @@ public class AircraftServiceImpl implements AircraftService {
     @Override
     public AircraftDto save(AircraftDto aircraftDto) {
 
+        aircraftDto.setRange(aircraftDto.getFuelTankSize() / aircraftDto.getFuelBurnRate() * aircraftDto.getAirspeed());
         AircraftEntity aircraftEntity = aircraftMapper.mapFrom(aircraftDto);
         AircraftEntity savedAircraftEntity =  aircraftRepository.save(aircraftEntity);
         return aircraftMapper.mapTo(savedAircraftEntity);
@@ -34,6 +35,7 @@ public class AircraftServiceImpl implements AircraftService {
     @Override
     public AircraftDto update(AircraftDto aircraftDto) {
 
+        aircraftDto.setRange(aircraftDto.getFuelTankSize() / aircraftDto.getFuelBurnRate() * aircraftDto.getAirspeed());
         AircraftEntity aircraftEntity = aircraftMapper.mapFrom(aircraftDto);
         AircraftEntity updatedAircraftEntity = aircraftRepository.save(aircraftEntity);
         return aircraftMapper.mapTo(updatedAircraftEntity);
