@@ -1,6 +1,7 @@
 package com.flightplanner.flightplannerserver.services.impl;
 
 import com.flightplanner.flightplannerserver.domain.dto.AirportDto;
+import com.flightplanner.flightplannerserver.domain.dto.ContinentDto;
 import com.flightplanner.flightplannerserver.domain.entities.AirportEntity;
 import com.flightplanner.flightplannerserver.mappers.Mapper;
 import com.flightplanner.flightplannerserver.repositories.AirportRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -25,7 +27,6 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public AirportDto save(AirportDto airportDto) {
-
         AirportEntity airportEntity = airportMapper.mapFrom(airportDto);
         AirportEntity savedAirportEntity = airportRepository.save(airportEntity);
         return airportMapper.mapTo(savedAirportEntity);
@@ -33,7 +34,6 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public AirportDto update(AirportDto airportDto) {
-
         AirportEntity airportEntity = airportMapper.mapFrom(airportDto);
         AirportEntity updatedAirportEntity = airportRepository.save(airportEntity);
         return airportMapper.mapTo(updatedAirportEntity);
@@ -41,9 +41,44 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public Optional<AirportDto> findById(Long airportId) {
+        Optional<AirportEntity> airportEntities = airportRepository.findById(airportId);
+        return airportEntities.map(airportMapper::mapTo);
+    }
 
-        Optional<AirportEntity> airportEntity = airportRepository.findById(airportId);
-        return airportEntity.map(airportMapper::mapTo);
+    @Override
+    public Optional<AirportDto> findByIcao(String icao) {
+        Optional<AirportEntity> airportEntities = airportRepository.findByIcao(icao);
+        return airportEntities.map(airportMapper::mapTo);
+    }
+
+    @Override
+    public List<AirportDto> findAllByCountryName(String countryName) {
+        return airportRepository
+                .findAllByCountryName(countryName)
+                        .stream()
+                        .map(airportMapper::mapTo)
+                        .collect(Collectors.toList()
+                        );
+    }
+
+    @Override
+    public List<AirportDto> findAllByIsJetaAvailable() {
+        return airportRepository
+                .findAllByIsJetaAvailable()
+                .stream()
+                .map(airportMapper::mapTo)
+                .collect(Collectors.toList()
+                );
+    }
+
+    @Override
+    public List<AirportDto> findAllByIsAvgasAvailable() {
+        return airportRepository
+                .findAllByIsAvgasAvailable()
+                .stream()
+                .map(airportMapper::mapTo)
+                .collect(Collectors.toList()
+                );
     }
 
     @Override
