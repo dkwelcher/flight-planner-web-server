@@ -20,7 +20,6 @@ public class AircraftController {
         this.aircraftService = aircraftService;
     }
 
-    // POST /aircraft
     @PostMapping(path = "/aircraft")
     public ResponseEntity<AircraftDto> createAircraft(@RequestBody AircraftDto aircraftDto) {
 
@@ -28,7 +27,6 @@ public class AircraftController {
         return new ResponseEntity<>(savedAircraftDto, HttpStatus.CREATED);
     }
 
-    // PUT /aircraft/123
     @PutMapping(path = "/aircraft/{aircraftId}")
     public ResponseEntity<AircraftDto> updateAircraft(
             @PathVariable("aircraftId") long aircraftId,
@@ -46,7 +44,6 @@ public class AircraftController {
         return new ResponseEntity<>(updatedAircraftDto, HttpStatus.OK);
     }
 
-    // GET /aircraft/123
     @GetMapping(path = "/aircraft/{aircraftId}")
     public ResponseEntity<AircraftDto> findAircraftById(@PathVariable("aircraftId") long aircraftId) {
 
@@ -56,7 +53,18 @@ public class AircraftController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // GET /aircraft/all
+    @GetMapping(path = "/aircraft/make/{aircraftMake}")
+    public ResponseEntity<List<AircraftDto>> listAllAircraftByMake(@PathVariable("aircraftMake") String aircraftMake) {
+        List<AircraftDto> aircraftDtos = aircraftService.findAllByAircraftMake(aircraftMake);
+        return new ResponseEntity<>(aircraftDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/aircraft/type/{aircraftType}")
+    public ResponseEntity<List<AircraftDto>> listAllAircraftByType(@PathVariable("aircraftType") String aircraftType) {
+        List<AircraftDto> aircraftDtos = aircraftService.findAllByAircraftType(aircraftType);
+        return new ResponseEntity<>(aircraftDtos, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/aircraft/all")
     public ResponseEntity<List<AircraftDto>> listAllAircraft() {
 
@@ -64,7 +72,6 @@ public class AircraftController {
         return new ResponseEntity<>(aircraftDtos, HttpStatus.OK);
     }
 
-    // DELETE /aircraft/123
     @DeleteMapping(path = "/aircraft/{aircraftId}")
     public ResponseEntity<HttpStatus> deleteAircraft(@PathVariable("aircraftId") long aircraftId) {
 
