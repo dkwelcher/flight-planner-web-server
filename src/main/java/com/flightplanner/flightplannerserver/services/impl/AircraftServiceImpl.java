@@ -25,7 +25,6 @@ public class AircraftServiceImpl implements AircraftService {
 
     @Override
     public AircraftDto save(AircraftDto aircraftDto) {
-
         aircraftDto.setRange(aircraftDto.getFuelTankSize() / aircraftDto.getFuelBurnRate() * aircraftDto.getAirspeed());
         AircraftEntity aircraftEntity = aircraftMapper.mapFrom(aircraftDto);
         AircraftEntity savedAircraftEntity =  aircraftRepository.save(aircraftEntity);
@@ -34,7 +33,6 @@ public class AircraftServiceImpl implements AircraftService {
 
     @Override
     public AircraftDto update(AircraftDto aircraftDto) {
-
         aircraftDto.setRange(aircraftDto.getFuelTankSize() / aircraftDto.getFuelBurnRate() * aircraftDto.getAirspeed());
         AircraftEntity aircraftEntity = aircraftMapper.mapFrom(aircraftDto);
         AircraftEntity updatedAircraftEntity = aircraftRepository.save(aircraftEntity);
@@ -43,9 +41,28 @@ public class AircraftServiceImpl implements AircraftService {
 
     @Override
     public Optional<AircraftDto> findById(Long aircraftId) {
-
         Optional<AircraftEntity> aircraftEntity = aircraftRepository.findById(aircraftId);
         return aircraftEntity.map(aircraftMapper::mapTo);
+    }
+
+    @Override
+    public List<AircraftDto> findAllByAircraftMake(String aircraftMake) {
+        return aircraftRepository
+                .findAllByAircraftMake(aircraftMake)
+                .stream()
+                .map(aircraftMapper::mapTo)
+                .collect(Collectors.toList()
+                );
+    }
+
+    @Override
+    public List<AircraftDto> findAllByAircraftType(String aircraftType) {
+        return aircraftRepository
+                .findAllByAircraftType(aircraftType)
+                .stream()
+                .map(aircraftMapper::mapTo)
+                .collect(Collectors.toList()
+                );
     }
 
     @Override
