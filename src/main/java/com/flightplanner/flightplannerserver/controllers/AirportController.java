@@ -18,15 +18,12 @@ public class AirportController {
 
     public AirportController(AirportService airportService) { this.airportService = airportService; }
 
-    // POST /airports
     @PostMapping(path = "/airports")
     public ResponseEntity<AirportDto> createAirport(@RequestBody AirportDto airportDto) {
-
         AirportDto savedAirportDto = airportService.save(airportDto);
         return new ResponseEntity<>(savedAirportDto, HttpStatus.CREATED);
     }
 
-    // PUT /airports/123
     @PutMapping(path = "/airports/{airportId}")
     public ResponseEntity<AirportDto> updateAirport(
             @PathVariable("airportId") long airportId,
@@ -44,28 +41,48 @@ public class AirportController {
         return new ResponseEntity<>(updatedAirportDto, HttpStatus.OK);
     }
 
-    // GET /airport/123
     @GetMapping(path = "/airports/{airportId}")
     public ResponseEntity<AirportDto> findAirportById(@PathVariable("airportId") long airportId) {
-
         Optional<AirportDto> airportDto = airportService.findById(airportId);
         return airportDto
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // GET /airport/all
+    @GetMapping(path = "/airports/icao/{icao}")
+    public ResponseEntity<AirportDto> findAirportByIcao(@PathVariable("icao") String icao) {
+        Optional<AirportDto> airportDto = airportService.findByIcao(icao);
+        return airportDto
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(path = "/airports/country/{countryName}")
+    public ResponseEntity<List<AirportDto>> listAllAirportsByCountryName(@PathVariable("countryName") String countryName) {
+        List<AirportDto> airportDtos = airportService.findAllByCountryName(countryName);
+        return new ResponseEntity<>(airportDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/airports/jeta")
+    public ResponseEntity<List<AirportDto>> listAllAirportsByIsJetaAvailable() {
+        List<AirportDto> airportDtos = airportService.findAllByIsJetaAvailable();
+        return new ResponseEntity<>(airportDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/airports/avgas")
+    public ResponseEntity<List<AirportDto>> listAllAirportsByIsAvgasAvailable() {
+        List<AirportDto> airportDtos = airportService.findAllByIsAvgasAvailable();
+        return new ResponseEntity<>(airportDtos, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/airports/all")
     public ResponseEntity<List<AirportDto>> listAllAirports() {
-
         List<AirportDto> airportDtos = airportService.findAll();
         return new ResponseEntity<>(airportDtos, HttpStatus.OK);
     }
 
-    // DELETE /airports/123
     @DeleteMapping(path = "/airports/{airportId}")
     public ResponseEntity<HttpStatus> deleteAirport(@PathVariable("airportId") long airportId) {
-
         airportService.deleteById(airportId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
