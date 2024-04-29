@@ -46,7 +46,7 @@ public class AirportLoader implements CommandLineRunner {
                 AirportDto airportDto = new AirportDto();
                 String[] attributes = line.split(",");
 
-                if(!airportRepository.existsByAirportName(attributes[2])) {
+                if(!airportRepository.existsByIcao(attributes[1])) {
                     airportDto.setAirportId(Long.parseLong(attributes[0]));
                     airportDto.setIcao(attributes[1]);
                     airportDto.setAirportName(attributes[2]);
