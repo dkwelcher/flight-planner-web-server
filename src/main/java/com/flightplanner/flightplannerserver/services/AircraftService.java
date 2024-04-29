@@ -10,6 +10,8 @@ public interface AircraftService {
     AircraftDto save(AircraftDto aircraftDto);
     AircraftDto update(AircraftDto aircraftDto);
     Optional<AircraftDto> findById(Long aircraftId);
+    List<AircraftDto> findAllByAircraftMake(String aircraftMake);
+    List<AircraftDto> findAllByAircraftType(String aircraftType);
     List<AircraftDto> findAll();
     boolean existsById(Long aircraftId);
     void deleteById(Long aircraftId);
