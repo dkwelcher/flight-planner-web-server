@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@Log
 public class AirportController {
 
     private final AirportService airportService;
