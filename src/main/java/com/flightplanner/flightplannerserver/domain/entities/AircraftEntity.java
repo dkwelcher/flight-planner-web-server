@@ -1,16 +1,16 @@
 package com.flightplanner.flightplannerserver.domain.entities;
 
-/**
- * Entity representation of an aircraft, mapping to the "aircraft" table in the database.
- *
- * @since 2024-04-23
- */
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+/**
+ * Entity representation of an aircraft, mapping to the "aircraft" table in the database.
+ *
+ * @since 2024-04-23
+ */
 
 @Data
 @AllArgsConstructor
