@@ -7,6 +7,7 @@ import com.flightplanner.flightplannerserver.mappers.Mapper;
 import com.flightplanner.flightplannerserver.repositories.AirportRepository;
 import com.flightplanner.flightplannerserver.repositories.CountryRepository;
 import com.flightplanner.flightplannerserver.services.AirportService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+@Slf4j
 @Component
 public class AirportLoader implements CommandLineRunner {
 
@@ -66,9 +68,9 @@ public class AirportLoader implements CommandLineRunner {
             }
             bufferedReader.close();
         } catch(FileNotFoundException e) {
-            e.printStackTrace();
+            log.error("Airports file not found", e);
         } catch(IOException e) {
-            e.printStackTrace();
+            log.error("IO Exception occurred while trying to read airports file", e);
         }
     }
 }

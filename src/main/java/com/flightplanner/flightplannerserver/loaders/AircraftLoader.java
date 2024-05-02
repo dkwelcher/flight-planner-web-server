@@ -2,6 +2,7 @@ package com.flightplanner.flightplannerserver.loaders;
 
 import com.flightplanner.flightplannerserver.domain.dto.AircraftDto;
 import com.flightplanner.flightplannerserver.services.AircraftService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+@Slf4j
 @Component
 public class AircraftLoader implements CommandLineRunner {
 
@@ -45,9 +47,9 @@ public class AircraftLoader implements CommandLineRunner {
             }
             bufferedReader.close();
         } catch(FileNotFoundException e) {
-            e.printStackTrace();
+            log.error("Aircraft file not found", e);
         } catch(IOException e) {
-            e.printStackTrace();
+            log.error("IO Exception occurred while trying to read aircraft file", e);
         }
     }
 }
