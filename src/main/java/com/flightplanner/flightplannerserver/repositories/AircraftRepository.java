@@ -18,4 +18,6 @@ public interface AircraftRepository extends CrudRepository<AircraftEntity, Long>
     List<AircraftEntity> findAllByAircraftMake(String aircraftMake);
 
     List<AircraftEntity> findAllByAircraftType(String aircraftType);
+
+    boolean existsByAircraftMakeAndAircraftModel(String aircraftMake, String aircraftModel);
 }
