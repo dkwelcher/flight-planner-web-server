@@ -8,6 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Interface defining the repository operations for database queries involving airport entities.
+ *
+ * @since 2024-04-29
+ */
+
 @Repository
 public interface AirportRepository extends CrudRepository<AirportEntity, Long> {
 
