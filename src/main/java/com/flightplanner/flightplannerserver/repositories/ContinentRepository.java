@@ -14,4 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface ContinentRepository extends CrudRepository<ContinentEntity, Long> {
 
     ContinentEntity findByContinentName(String continentName);
+
+    boolean existsByContinentName(String continentName);
 }
