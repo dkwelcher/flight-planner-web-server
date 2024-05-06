@@ -1,5 +1,6 @@
 package com.flightplanner.flightplannerserver.domain.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,36 +26,43 @@ public class AircraftDto {
     /**
      * An attribute representing the make of the aircraft (e.g., Boeing or Airbus).
      */
+    @NotEmpty
     private String aircraftMake;
 
     /**
      * An attribute representing the model of the aircraft (e.g., 747 or A380).
      */
+    @NotEmpty
     private String aircraftModel;
 
     /**
      * An attribute representing the type of aircraft (e.g., jet, turboprop, or prop).
      */
+    @NotEmpty
     private String aircraftType;
 
     /**
      * An attribute representing the type of fuel used by the aircraft (e.g., Jet-A or Avgas).
      */
+    @NotEmpty
     private String fuelType;
 
     /**
      * An attribute representing the size of the aircraft's fuel tank measured in liters.
      */
+    @NotEmpty
     private double fuelTankSize;
 
     /**
      * An attribute representing the fuel burn rate of the aircraft measured in liters per hour at cruise speed.
      */
+    @NotEmpty
     private double fuelBurnRate;
 
     /**
      * An attribute representing the air speed of the aircraft measured in knots at cruise speed.
      */
+    @NotEmpty
     private double airspeed;
 
     /**
@@ -65,5 +73,6 @@ public class AircraftDto {
     /**
      * An attribute representing the aircraft's minimum runway length required to land measured in feet.
      */
+    @NotEmpty
     private double minimumRunwayLengthRequired;
 }
