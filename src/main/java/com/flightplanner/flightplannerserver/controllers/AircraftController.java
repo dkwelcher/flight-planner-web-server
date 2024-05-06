@@ -2,6 +2,7 @@ package com.flightplanner.flightplannerserver.controllers;
 
 import com.flightplanner.flightplannerserver.domain.dto.AircraftDto;
 import com.flightplanner.flightplannerserver.services.AircraftService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class AircraftController {
      * @return A ResponseEntity containing the created aircraft or an error status.
      */
     @PostMapping(path = "/aircraft")
-    public ResponseEntity<AircraftDto> createAircraft(@RequestBody AircraftDto aircraftDto) {
+    public ResponseEntity<AircraftDto> createAircraft(@RequestBody @Valid AircraftDto aircraftDto) {
 
         AircraftDto savedAircraftDto = aircraftService.save(aircraftDto);
         return new ResponseEntity<>(savedAircraftDto, HttpStatus.CREATED);
@@ -47,7 +48,7 @@ public class AircraftController {
     @PutMapping(path = "/aircraft/{aircraftId}")
     public ResponseEntity<AircraftDto> updateAircraft(
             @PathVariable("aircraftId") long aircraftId,
-            @RequestBody AircraftDto aircraftDto) {
+            @RequestBody @Valid AircraftDto aircraftDto) {
 
         if(aircraftDto.getAircraftId() != aircraftId) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -2,6 +2,7 @@ package com.flightplanner.flightplannerserver.controllers;
 
 import com.flightplanner.flightplannerserver.domain.dto.AirportDto;
 import com.flightplanner.flightplannerserver.services.AirportService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class AirportController {
      * @return A ResponseEntity containing the created airport or an error status.
      */
     @PostMapping(path = "/airports")
-    public ResponseEntity<AirportDto> createAirport(@RequestBody AirportDto airportDto) {
+    public ResponseEntity<AirportDto> createAirport(@RequestBody @Valid AirportDto airportDto) {
         AirportDto savedAirportDto = airportService.save(airportDto);
         return new ResponseEntity<>(savedAirportDto, HttpStatus.CREATED);
     }
@@ -44,7 +45,7 @@ public class AirportController {
     @PutMapping(path = "/airports/{airportId}")
     public ResponseEntity<AirportDto> updateAirport(
             @PathVariable("airportId") long airportId,
-            @RequestBody AirportDto airportDto) {
+            @RequestBody @Valid AirportDto airportDto) {
 
         if(airportDto.getAirportId() != airportId) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
