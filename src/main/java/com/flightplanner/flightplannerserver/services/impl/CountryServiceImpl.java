@@ -7,6 +7,13 @@ import com.flightplanner.flightplannerserver.repositories.CountryRepository;
 import com.flightplanner.flightplannerserver.services.CountryService;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service implementation for managing country DTOs.
+ * See interface for general comments. Implementation-specific comments are provided only if necessary.
+ *
+ * @since 2024-04-22
+ */
+
 @Service
 public class CountryServiceImpl implements CountryService {
 

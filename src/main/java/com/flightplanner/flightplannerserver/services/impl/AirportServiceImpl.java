@@ -1,7 +1,6 @@
 package com.flightplanner.flightplannerserver.services.impl;
 
 import com.flightplanner.flightplannerserver.domain.dto.AirportDto;
-import com.flightplanner.flightplannerserver.domain.dto.ContinentDto;
 import com.flightplanner.flightplannerserver.domain.entities.AirportEntity;
 import com.flightplanner.flightplannerserver.mappers.Mapper;
 import com.flightplanner.flightplannerserver.repositories.AirportRepository;
@@ -11,8 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+
+/**
+ * Service implementation for managing airport DTOs.
+ * See interface for general comments. Implementation-specific comments are provided only if necessary.
+ *
+ * @since 2024-04-29
+ */
 
 @Service
 public class AirportServiceImpl implements AirportService {

@@ -12,6 +12,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+/**
+ * Service implementation for managing aircraft DTOs.
+ * See interface for general comments. Implementation-specific comments are provided only if necessary.
+ *
+ * @since 2024-04-29
+ */
+
 @Service
 public class AircraftServiceImpl implements AircraftService {
 
