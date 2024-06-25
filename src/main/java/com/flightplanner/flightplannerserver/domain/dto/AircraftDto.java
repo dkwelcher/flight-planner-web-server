@@ -1,6 +1,7 @@
 package com.flightplanner.flightplannerserver.domain.dto;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +22,7 @@ public class AircraftDto {
     /**
      * An attribute representing the database identification number of the aircraft.
      */
-    private long aircraftId;
+    private Long aircraftId;
 
     /**
      * An attribute representing the make of the aircraft (e.g., Boeing or Airbus).
@@ -50,29 +51,29 @@ public class AircraftDto {
     /**
      * An attribute representing the size of the aircraft's fuel tank measured in liters.
      */
-    @NotEmpty
-    private double fuelTankSize;
+    @NotNull
+    private Double fuelTankSize;
 
     /**
      * An attribute representing the fuel burn rate of the aircraft measured in liters per hour at cruise speed.
      */
-    @NotEmpty
-    private double fuelBurnRate;
+    @NotNull
+    private Double fuelBurnRate;
 
     /**
      * An attribute representing the air speed of the aircraft measured in knots at cruise speed.
      */
-    @NotEmpty
-    private double airspeed;
+    @NotNull
+    private Double airspeed;
 
     /**
      * An attribute representing the maximum range of the aircraft measured in nautical miles.
      */
-    private double range;
+    private Double range;
 
     /**
      * An attribute representing the aircraft's minimum runway length required to land measured in feet.
      */
-    @NotEmpty
-    private double minimumRunwayLengthRequired;
+    @NotNull
+    private Double minimumRunwayLengthRequired;
 }
