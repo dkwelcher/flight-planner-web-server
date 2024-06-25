@@ -26,7 +26,7 @@ public class AircraftEntity {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long aircraftId;
+    private Long aircraftId;
 
     /**
      * An attribute representing the make of the aircraft (e.g., Boeing or Airbus).
@@ -51,25 +51,25 @@ public class AircraftEntity {
     /**
      * An attribute representing the size of the aircraft's fuel tank measured in liters.
      */
-    private double fuelTankSize;
+    private Double fuelTankSize;
 
     /**
      * An attribute representing the fuel burn rate of the aircraft measured in liters per hour at cruise speed.
      */
-    private double fuelBurnRate;
+    private Double fuelBurnRate;
 
     /**
      * An attribute representing the air speed of the aircraft measured in knots at cruise speed.
      */
-    private double airspeed;
+    private Double airspeed;
 
     /**
      * An attribute representing the maximum range of the aircraft measured in nautical miles.
      */
-    private double range;
+    private Double range;
 
     /**
      * An attribute representing the aircraft's minimum runway length required to land measured in feet.
      */
-    private double minimumRunwayLengthRequired;
+    private Double minimumRunwayLengthRequired;
 }
