@@ -32,7 +32,9 @@ public class AircraftServiceImpl implements AircraftService {
 
     @Override
     public AircraftDto save(AircraftDto aircraftDto) {
-        aircraftDto.setRange(aircraftDto.getFuelTankSize() / aircraftDto.getFuelBurnRate() * aircraftDto.getAirspeed());
+        aircraftDto.setRange(calculateAircraftRange(aircraftDto.getFuelTankSize(),
+                                                    aircraftDto.getFuelBurnRate(),
+                                                    aircraftDto.getAirspeed()));
         AircraftEntity aircraftEntity = aircraftMapper.mapFrom(aircraftDto);
         AircraftEntity savedAircraftEntity =  aircraftRepository.save(aircraftEntity);
         return aircraftMapper.mapTo(savedAircraftEntity);
@@ -40,7 +42,9 @@ public class AircraftServiceImpl implements AircraftService {
 
     @Override
     public AircraftDto update(AircraftDto aircraftDto) {
-        aircraftDto.setRange(aircraftDto.getFuelTankSize() / aircraftDto.getFuelBurnRate() * aircraftDto.getAirspeed());
+        aircraftDto.setRange(calculateAircraftRange(aircraftDto.getFuelTankSize(),
+                                                    aircraftDto.getFuelBurnRate(),
+                                                    aircraftDto.getAirspeed()));
         AircraftEntity aircraftEntity = aircraftMapper.mapFrom(aircraftDto);
         AircraftEntity updatedAircraftEntity = aircraftRepository.save(aircraftEntity);
         return aircraftMapper.mapTo(updatedAircraftEntity);
@@ -92,5 +96,9 @@ public class AircraftServiceImpl implements AircraftService {
     @Override
     public void deleteById(Long aircraftId) {
         aircraftRepository.deleteById(aircraftId);
+    }
+
+    private double calculateAircraftRange(double fuelTankSize, double fuelBurnRate, double airspeed) {
+        return Math.floor(fuelTankSize / fuelBurnRate * airspeed);
     }
 }
